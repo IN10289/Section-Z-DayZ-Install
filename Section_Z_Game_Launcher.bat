@@ -4,7 +4,7 @@ set mod=%1
 set map=%2
 
 :start
-echo Section Z Game Launcher v3.3 created by CE28N.
+echo Welcome to Section Z Game Launcher created by CE28N.
 echo Join us at our RaidCall Group: 25597687!
 echo.
 echo Select the mod you want to play by input the mod number.
@@ -25,33 +25,19 @@ echo 1 - Chernarus
 echo.
 echo If you wanna play the advanced maps, you can input the map number below.
 echo.
-echo 2 - Namalsk
-echo 3 - Taviana (dayztaviana.com) 
-echo 4 - Origins
+echo 2 - Origins
 echo.
 echo E - Back to menu
 echo.
 set /P map=Map number: 
 if "%map%"=="1" goto start_chernarus
-if "%map%"=="2" goto start_namalsk
-if "%map%"=="3" goto start_taviana
-if "%map%"=="4" goto start_origins
+if "%map%"=="2" goto start_origins
 if "%map%"=="e" cls & goto start
 if "%map%"=="E" cls & goto start
 
 :start_chernarus
 cls
 if exist @DayZ\addons\dayz.pbo (start Expansion\beta\arma2oa.exe -mod=@Dayz;CA;Expansion\beta;Expansion\beta\Expansion -noFilePatching -nosplash -noPause -world=Chernarus) else (goto dayz_checkfail)
-exit
-
-:start_namalsk
-cls
-if exist @DayZ_Namalsk\addons\namalsk.pbo (start Expansion\beta\arma2oa.exe -mod=@DayZ_Namalsk_@DayZ;@DayZ_Namalsk;Expansion\beta;Expansion\beta\Expansion -noFilePatching -nosplash -noPause) else (goto dayz_checkfail)
-exit
-
-:start_taviana
-cls
-if exist @Taviana\addons\dayz.pbo (start Expansion\beta\arma2oa.exe -mod=@Taviana;Expansion\beta;Expansion\beta\Expansion -noFilePatching -nosplash -noPause) else (goto dayz_checkfail)
 exit
 
 :start_origins
@@ -72,7 +58,6 @@ echo Select the mod you want to play by input the mod number.
 echo.
 echo A - ACE
 echo O - ArmA 2 : OA
-echo W - Wasteland
 echo.
 echo E - Back to menu
 echo.
@@ -81,19 +66,17 @@ if "%map%"=="a" goto start_ace
 if "%map%"=="A" goto start_ace
 if "%map%"=="o" goto start_oa
 if "%map%"=="O" goto start_oa
-if "%map%"=="w" goto start_oa
-if "%map%"=="W" goto start_oa
 if "%map%"=="e" cls & goto start
 if "%map%"=="E" cls & goto start
 
 :start_ace
 cls
-if exist @ACE\addons\ace_anims.pbo (start Expansion\beta\arma2oa.exe -mod=@ACE;@ACEX;@ACEX_RU;@ACEX_SM;@ACEX_USNavy;@CBA;@CBA_A2;@CBA_OA -beta=Expansion\beta;Expansion\beta\Expansion -nosplash -cpuCount=4 -exThreads=1 -maxmem=2047 -noCB) else (goto ace_checkfail)
+if exist @ACE\addons\ace_anims.pbo (start Expansion\beta\arma2oa.exe -mod=@CBA_CO;@ACE;@ACEX;@ACEX_RU;@ACEX_SM;@ACEX_USNavy;Expansion\beta;Expansion\beta\Expansion -noFilePatching -nosplash -noPause) else (goto ace_checkfail)
 exit
 
 :start_oa
 cls
-if exist Expansion\beta\arma2oa.exe (start Expansion\beta\arma2oa.exe -beta=Expansion\beta;Expansion\beta\Expansion -nosplash -cpuCount=4 -exThreads=1 -maxmem=2047 -noCB) else (goto oa_checkfail)
+if exist Expansion\beta\arma2oa.exe (start Expansion\beta\arma2oa.exe -beta=Expansion\beta;Expansion\beta\Expansion -noFilePatching -nosplash -noPause) else (goto oa_checkfail)
 exit
 
 :ace_checkfail
